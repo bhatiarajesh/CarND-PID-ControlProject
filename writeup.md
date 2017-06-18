@@ -18,12 +18,12 @@ D accounts for possible future trends of the error, based on its current rate of
 
 The 'P' component allows the car to get close to the CTE=0 line but there is an oscillation around it. It makes the car react to the CTE value in a linear fashion.For example with a (large) value of 1.0 as seen here we observe that the control output is large (25 degree) causing an overshoot.
 
-[![SDC - PID controller p=1 ](https://github.com/bhatiarajesh/CarND-PID-Control-Project/raw/master/out/pid-controller-HIGH-kp.png)]
+[![SDC - PID controller p=1 ](https://github.com/bhatiarajesh/CarND-PID-ControlProject/raw/master/out/pid-controller-HIGH-kp.png)]
 
 This is less dramatic for smaller values of 'Kp', but whenever the car encounters a corner, the CTE increases faster and this induces a violent steering correction which often results in the car going off track. With Kp(i.e. 0.001) of a smaller value, the car doesn't react fast enough, the oscillations around the center line seem to have a very low frequency. Considering the above into account, 0.1 seems to be a good start value for Kp.
 
 The 'D' component dampens(as expected) the oscillations induced by the 'P' component. A low value for Kd (0.1) seems to not control the oscillations induced by ‘P’ much as can be seen below. 
-[![SDC - PID controller d=0.1 ](https://github.com/bhatiarajesh/CarND-PID-Control-Project/raw/master/out/pid-controller-LOW-kd.png)]
+[![SDC - PID controller d=0.1 ](https://github.com/bhatiarajesh/CarND-PID-ControlProject/raw/master/out/pid-controller-LOW-kd.png)]
 
 A value of 1.0 for the Kd seems to control the oscillations better and return to the desired setpoint quicker and smoother.
 
@@ -34,7 +34,7 @@ The 'I' component is meant to adjust for bias in the control, for example when t
 
 When changing throttle from 0.3 to 1.0, I noticed that the car was not able to pass the track successfully and there were large oscillations as shows here.
 
-[![SDC - PID controller d=0.1 ](https://github.com/bhatiarajesh/CarND-PID-Control-Project/raw/master/out/pid-controller-HIGH-throttle.png)]
+[![SDC - PID controller d=0.1 ](https://github.com/bhatiarajesh/CarND-PID-ControlProject/raw/master/out/pid-controller-HIGH-throttle.png)]
 
 
 # Simulating bias
@@ -47,7 +47,7 @@ When adding a constant value (ex. 0.3) to the input steering angle (steering_val
 
 Based on manually tuning the hyper parameters, I settled on the values for Kp = 0.1 , Ki = 0.001 and Kd = 1.0 as good tuning values to make the car circulate around the whole track successfully.
 
-[![SDC - PID controller p=0.1 and d=1.0, i=0.001 ](https://github.com/bhatiarajesh/CarND-PID-Control-Project/raw/master/out/pid-controller-success.gif)]
+[![SDC - PID controller p=0.1 and d=1.0, i=0.001 ](https://github.com/bhatiarajesh/CarND-PID-ControlProject/raw/master/out/pid-controller-success.gif)]
 
 
 
